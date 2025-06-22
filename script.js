@@ -1,7 +1,15 @@
 // הגדרות מערכת
-const SUPABASE_URL = 'https://iasbfrurebekgtrhiimh.supabase.co';
-const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imlhc2JmcnVyZWJla2d0cmhpaW1oIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDg0MjI3ODUsImV4cCI6MjA2Mzk5ODc4NX0.hmyQmZOgMI4gTpeijYBP7f45CSdZMib1hX0jdYUuEbY';
-const API_KEY = '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';
+// הגדרות מערכת - יטען מהשרת
+let SUPABASE_URL, SUPABASE_KEY, API_KEY;
+
+// טעינת הגדרות מהשרת
+fetch('/config')
+  .then(response => response.json())
+  .then(config => {
+    SUPABASE_URL = config.SUPABASE_URL;
+    SUPABASE_KEY = config.SUPABASE_KEY;
+    API_KEY = config.API_KEY;
+  });
 
 // מצב השיחה
 class ConversationState {
